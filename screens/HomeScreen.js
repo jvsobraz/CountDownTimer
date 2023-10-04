@@ -23,7 +23,7 @@ function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <TextInput
-        placeholder="Digite o tempo (segundos)"
+        placeholder="Tempo em segundos"
         value={timeInput}
         onChangeText={(text) => setTimeInput(text)}
         style={styles.textInput}
@@ -44,7 +44,7 @@ function HomeScreen({ navigation }) {
             }
             color="black"
             style={styles.flatListButton}>
-            <Text style={styles.text}>Iniciar {item} segundos</Text>
+            <Text style={styles.text}>{item}</Text>
           </TouchableOpacity>
         )}
       />
@@ -68,10 +68,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'black',
     color: 'white',
-    paddingHorizontal: 10,
-    width: '55%',
+    width: '45%',
     height: 40,
     marginBottom: 20,
+    paddingHorizontal: 10,
   },
   addButton: {
     flex: 1,
@@ -81,6 +81,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingHorizontal: 20,
     paddingVertical: 10,
+    marginVertical: 5,
+    marginTop: 10,
   },
   flatListButton: {
     flex: 1,
