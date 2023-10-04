@@ -13,8 +13,6 @@ function TimerScreen({ route }) {
         size={200}
         strokeWidth={10}
         onComplete={() => {
-          // Você pode adicionar ações aqui quando o timer for concluído.
-          // Por exemplo, navegar de volta para a tela inicial.
         }}
       />
     </View>
