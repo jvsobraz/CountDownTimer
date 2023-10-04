@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, FlatList } from 'react-native';
+import {
+  Text,
+  View,
+  TextInput,
+  Button,
+  FlatList,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
 
 function HomeScreen({ navigation }) {
   const [timeInput, setTimeInput] = useState('');
@@ -13,11 +21,12 @@ function HomeScreen({ navigation }) {
   };
 
   return (
-    <View>
+    <View style={styles.container}>
       <TextInput
         placeholder="Digite o tempo (segundos)"
         value={timeInput}
         onChangeText={(text) => setTimeInput(text)}
+        style={styles.textInput}
       />
       <Button
         title="Adicionar"
@@ -29,12 +38,14 @@ function HomeScreen({ navigation }) {
         data={timerData}
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => (
-          <Button
-            title={`Iniciar ${item} segundos`}
-            onPress={() => navigation.navigate('Timer', { time: parseInt(item) })}
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate('Timer', { time: parseInt(item) })
+            }
             color="black"
-            style={styles.flatListButton}
-          />
+            style={styles.flatListButton}>
+            <Text style={styles.text}>Iniciar {item} segundos</Text>
+          </TouchableOpacity>
         )}
       />
     </View>
@@ -42,11 +53,45 @@ function HomeScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  addButton: {
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'white',
+  },
+  text: {
+    color: 'white'
+  },
+  textInput: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'black',
     color: 'white',
+    paddingHorizontal: 10,
+    width: '55%',
+    height: 40,
+    marginBottom: 20,
+  },
+  addButton: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'red',
+    borderRadius: 10,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
   },
   flatListButton: {
-    color: 'white',
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'black',
+    borderRadius: 5,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    marginVertical: 5,
+    marginTop: 10,
   },
 });
 
